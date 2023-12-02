@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const URL = require('../url')
+const shortenURL = require('../../utils/shortenURL')
 if (process.env.NODE_ENV != 'production') {
   require('dotenv').config()
 }
@@ -14,14 +15,16 @@ db.on('error', () => {
 })
 
 db.once('open', () => {
+  let shortURL = shortenURL(5)
   console.log('mongodb connected!')
   URL.create({
     originURL: `https://www.google.com/`,
-    shortURL: `https://myproject/12fgw`
+    shortURL: `https://myproject/${shortURL}`
   })
+  shortURL = shortenURL(5)
   URL.create({
     originURL: `https://www.youtube.com/`,
-    shortURL: `https://myproject/4t86j`
+    shortURL: `https://myproject/${shortURL}`
   })
 
   console.log('done')
