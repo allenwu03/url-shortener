@@ -17,7 +17,7 @@ body {
   }
   
   .error-msg {
-    width: 50%;
+    width: 80%;
     text-align: center;
     background-color: salmon;
     padding: 8px 15px;

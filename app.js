@@ -36,17 +36,19 @@ app.post('/', (req, res) => {
     .catch((error) => console.error(error))
 })
 
-app.get('/:shortURL', (req, res) => {
+app.get('/allenproject/:shortURL', (req, res) => {
+  console.log('hello world')
   const { shortURL } = req.params
   URL.findOne({ shortURL })
     .then((data) => {
       if (!data) {
         return res.render('error', {
           errorMsg: "Can't found the URL",
-          errorURL: req.header.host + '/' + shortURL
+          errorURL: req.headers.host + '/' + shortURL
         })
       }
-      res.redirect(data.originalURL)
+
+      res.redirect(data.originURL)
     })
     .catch((error) => console.error(error))
 })
