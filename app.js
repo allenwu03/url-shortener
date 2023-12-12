@@ -37,7 +37,6 @@ app.post('/', (req, res) => {
 })
 
 app.get('/allenproject/:shortURL', (req, res) => {
-  console.log('hello world')
   const { shortURL } = req.params
   URL.findOne({ shortURL })
     .then((data) => {
